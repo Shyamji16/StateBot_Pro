@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8fc">
+    <title>StatBot Pro — Ask your data</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #1b2033;
+            --muted: #777f94;
+            --line: #e9ebf2;
+            --paper: #fff;
+            --canvas: #f7f8fc;
+            --violet: #6758e8;
+            --violet-dark: #5546d5;
+            --violet-soft: #f0efff;
+            --green: #248767;
+            --green-soft: #e9f7f1;
+            --shadow: 0 12px 36px rgba(32, 38, 68, .055);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--canvas);
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+        button, input, select, textarea { font: inherit; }
+        button, a, label { -webkit-tap-highlight-color: transparent; }
+        .app-shell { min-height: 100vh; }
+        .sidebar {
+            position: fixed;
+            inset: 0 auto 0 0;
+            z-index: 2;
+            display: flex;
+            width: 246px;
+            flex-direction: column;
+            border-right: 1px solid var(--line);
+            background: var(--paper);
+            padding: 25px 18px 18px;
+        }
+        .brand { display: flex; align-items: center; gap: 11px; padding: 0 8px; }
+        .brand-mark {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--violet);
+            color: #fff;
+        }
+        .brand-mark svg { width: 22px; height: 22px; }
+        .brand-name { font-size: 16px; font-weight: 760; letter-spacing: -.5px; }
+        .brand-name span { color: var(--violet); }
+        .workspace-label {
+            margin: 42px 10px 12px;
+            color: #9ba1b1;
+            font-size: 10px;
+            font-weight: 750;
+            letter-spacing: 1.15px;
+            text-transform: uppercase;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            border-radius: 10px;
+            color: #606a80;
+            padding: 11px 12px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nav-item.active { background: var(--violet-soft); color: var(--violet-dark); }
+        .nav-item svg { width: 17px; height: 17px; }
+        .side-spacer { flex: 1; }
+        .sidebar-note {
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            background: #fbfbfe;
+            padding: 14px;
+        }
+        .sidebar-note strong { display: block; margin: 0 0 6px; font-size: 12px; }
+        .sidebar-note p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+        .sidebar-foot { padding: 17px 7px 0; color: #989eae; font-size: 11px; }
+        .main { min-height: 100vh; margin-left: 246px; }
+        .topbar {
+            display: flex;
+            min-height: 70px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255,255,255,.86);
+            padding: 0 clamp(22px, 5vw, 68px);
+        }
+        .crumb { color: #9299aa; font-size: 12px; }
+        .crumb b { color: #606a80; font-weight: 650; }
+        .top-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667085;
+            font-size: 12px;
+        }
+        .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #43b68c; box-shadow: 0 0 0 3px #e8f7f1; }
+        .content { width: min(100%, 1100px); margin: 0 auto; padding: 48px clamp(22px, 5vw, 68px) 70px; }
+        .eyebrow { display: flex; align-items: center; gap: 8px; color: var(--violet); font-size: 11px; font-weight: 750; letter-spacing: 1px; text-transform: uppercase; }
+        .eyebrow svg { width: 15px; height: 15px; }
+        h1 { margin: 13px 0 8px; font-size: clamp(28px, 4vw, 38px); font-weight: 740; letter-spacing: -1.5px; line-height: 1.15; }
+        .intro { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+        .steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 29px 0 30px; }
+        .step {
+            display: flex;
+            min-height: 65px;
+            align-items: center;
+            gap: 11px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: rgba(255,255,255,.7);
+            padding: 12px 14px;
+        }
+        .step-number { display: grid; width: 28px; height: 28px; flex: 0 0 28px; place-items: center; border-radius: 9px; background: var(--violet-soft); color: var(--violet); font-size: 12px; font-weight: 750; }
+        .step-copy b { display: block; font-size: 12px; }
+        .step-copy span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+        .card { border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: var(--shadow); }
+        .card-heading { display: flex; align-items: flex-start; gap: 12px; }
+        .card-icon { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; border-radius: 11px; background: var(--violet-soft); color: var(--violet); }
+        .card-icon svg { width: 19px; height: 19px; }
+        .card-heading h2 { margin: 1px 0 5px; font-size: 15px; letter-spacing: -.2px; }
+        .card-heading p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+        .upload-card { padding: 22px; }
+        .upload-drop {
+            position: relative;
+            display: flex;
+            min-height: 124px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 19px;
+            border: 1px dashed #cbc9ed;
+            border-radius: 12px;
+            background: #fbfaff;
+            color: var(--ink);
+            cursor: pointer;
+            text-align: center;
+            transition: border-color .18s ease, background .18s ease;
+        }
+        .upload-drop:hover, .upload-drop:focus-within { border-color: var(--violet); background: #f7f6ff; }
+        .upload-drop[data-dragging="true"] { border-color: var(--violet); background: #f2f0ff; }
+        .upload-drop svg { width: 23px; height: 23px; margin-bottom: 9px; color: var(--violet); }
+        .upload-drop strong { font-size: 12px; }
+        .upload-drop strong span { color: var(--violet); }
+        .upload-drop small { margin-top: 5px; color: #9299aa; font-size: 10px; }
+        .file-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+        .upload-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+        .file-caption { overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+        .primary-button {
+            display: inline-flex;
+            min-height: 39px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--violet);
+            color: white;
+            padding: 0 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            transition: background .18s ease, transform .18s ease;
+        }
+        .primary-button:hover { transform: translateY(-1px); background: var(--violet-dark); }
+        .primary-button svg { width: 15px; height: 15px; }
+        .message { display: flex; align-items: center; gap: 9px; margin-top: 15px; border-radius: 9px; padding: 10px 12px; font-size: 12px; }
+        .message.success { background: var(--green-soft); color: #247253; }
+        .message.error { background: #fff0ef; color: #b33c37; }
+        .dataset-bar { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 18px 2px 0; }
+        .dataset-label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; }
+        .dataset-label svg { width: 15px; height: 15px; color: var(--green); }
+        .dataset-count { color: #9299aa; font-size: 10px; }
+        .ask-card { margin-top: 17px; padding: 22px; }
+        .ask-form { margin-top: 18px; }
+        .field-label { display: block; margin: 0 0 8px; color: #525b70; font-size: 11px; font-weight: 700; }
+        .select-wrap { position: relative; }
+        .select-wrap::after { position: absolute; top: 50%; right: 14px; width: 7px; height: 7px; border-right: 1.5px solid #81889a; border-bottom: 1.5px solid #81889a; content: ""; pointer-events: none; transform: translateY(-70%) rotate(45deg); }
+        select, textarea {
+            width: 100%;
+            border: 1px solid #e4e6ee;
+            border-radius: 9px;
+            outline: none;
+            background: white;
+            color: var(--ink);
+            transition: border-color .18s ease, box-shadow .18s ease;
+        }
+        select { height: 42px; appearance: none; padding: 0 38px 0 12px; font-size: 12px; }
+        textarea { min-height: 91px; resize: vertical; padding: 12px; font-size: 12px; line-height: 1.55; }
+        select:focus, textarea:focus { border-color: #a49bef; box-shadow: 0 0 0 3px rgba(103,88,232,.1); }
+        .question-label { margin-top: 17px; }
+        .suggestions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+        .suggestion {
+            border: 1px solid #e9e8f5;
+            border-radius: 7px;
+            background: #fff;
+            color: #737b91;
+            padding: 7px 9px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: .15s ease;
+        }
+        .suggestion:hover { border-color: #c9c4f4; background: #faf9ff; color: var(--violet-dark); }
+        .ask-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 15px; }
+        .privacy-note { color: #969cad; font-size: 10px; line-height: 1.5; }
+        .empty-state { margin-top: 18px; border: 1px dashed #dfe2eb; border-radius: 12px; background: rgba(255,255,255,.56); padding: 19px; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+        .empty-state b { display: block; margin-bottom: 3px; color: #525b70; }
+        .result-card { margin-top: 19px; overflow: hidden; }
+        .result-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding: 17px 20px; }
+        .result-title { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; }
+        .result-title svg { width: 17px; height: 17px; color: var(--green); }
+        .result-tag { border-radius: 20px; background: var(--green-soft); color: var(--green); padding: 5px 9px; font-size: 10px; font-weight: 700; }
+        .result-body { padding: 20px; }
+        .answer-text { margin: 0; color: #424b60; font-size: 13px; line-height: 1.75; overflow-wrap: anywhere; }
+        .table-wrap { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 11px; text-align: left; }
+        th { background: #f8f8fc; color: #697287; font-size: 10px; font-weight: 700; }
+        th, td { border-bottom: 1px solid var(--line); padding: 10px 11px; white-space: nowrap; }
+        td { color: #424b60; }
+        .chart-image { display: block; width: min(100%, 760px); height: auto; margin: 20px auto 0; border: 1px solid var(--line); border-radius: 10px; }
+        .downloads { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+        .download-link { display:inline-flex; min-height:36px; align-items:center; border:1px solid var(--line); border-radius:9px; background:#fff; color:#5143cb; padding:0 12px; font-size:11px; font-weight:750; }
+        .download-link:hover { border-color:#c8c3f2; background:#faf9ff; }
+        details { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 13px; }
+        summary { color: #737b91; cursor: pointer; font-size: 11px; font-weight: 650; }
+        .steps-list { display: grid; gap: 7px; margin: 12px 0 0; padding-left: 17px; color: #727b90; font-size: 11px; line-height: 1.5; }
+        .bottom-note { margin: 19px 0 0; color: #989eae; font-size: 10px; text-align: center; }
+        @media (max-width: 850px) {
+            .sidebar { width: 205px; }
+            .main { margin-left: 205px; }
+            .steps-row { gap: 8px; }
+            .step { padding: 10px; }
+        }
+        @media (max-width: 650px) {
+            .sidebar { position: static; width: auto; height: auto; flex-direction: row; align-items: center; justify-content: space-between; border-right: 0; border-bottom: 1px solid var(--line); padding: 13px 18px; }
+            .workspace-label, .nav-item, .side-spacer, .sidebar-note, .sidebar-foot { display: none; }
+            .main { min-height: auto; margin-left: 0; }
+            .topbar { min-height: 52px; padding: 0 20px; }
+            .content { padding: 32px 18px 45px; }
+            .steps-row { grid-template-columns: 1fr; gap: 7px; margin: 22px 0; }
+            .step { min-height: 53px; }
+            .upload-card, .ask-card { padding: 17px; }
+            .dataset-bar { align-items: flex-start; }
+            .ask-footer { align-items: flex-end; }
+            .privacy-note { max-width: 56%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16"/><path d="m7 15 4-4 3 2 5-6"/></svg>
+            </div>
+            <div class="brand-name">StatBot <span>Pro</span></div>
+        </div>
+        <div class="workspace-label">Workspace</div>
+        <a class="nav-item active" href="/" aria-current="page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg>
+            Data assistant
+        </a>
+        <a class="nav-item" href="/chat/">Chat with data</a>
+        <a class="nav-item" href="/upload/">Upload CSV</a>
+        <div class="side-spacer"></div>
+        <div class="sidebar-note">
+            <strong>Your data, in plain language</strong>
+            <p>Upload a CSV and ask a question. StatBot can return an answer, a table, or a chart.</p>
+        </div>
+        <div class="sidebar-foot">StatBot Pro · CSV analytics</div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="crumb">Workspace <span aria-hidden="true">/</span> <b>Data assistant</b></div>
+            <div class="top-status"><span class="status-dot"></span> Ready when you are</div>
+        </header>
+
+        <section class="content">
+            <div class="eyebrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 14 1.2 2.8L23 18l-2.8 1.2L19 22l-1.2-2.8L15 18l2.8-1.2L19 14Z"/></svg>
+                Your data, made simple
+            </div>
+            <h1>Ask your data anything.</h1>
+            <p class="intro">Upload a CSV, choose what you want to explore, and get a clear answer in seconds.</p>
+
+            <div class="steps-row" aria-label="How it works">
+                <div class="step"><span class="step-number">01</span><span class="step-copy"><b>Upload a CSV</b><span>Bring your spreadsheet</span></span></div>
+                <div class="step"><span class="step-number">02</span><span class="step-copy"><b>Ask a question</b><span>Use everyday language</span></span></div>
+                <div class="step"><span class="step-number">03</span><span class="step-copy"><b>Get insights</b><span>Answers, tables &amp; charts</span></span></div>
+            </div>
+
+            <section class="card upload-card" aria-labelledby="upload-title">
+                <div class="card-heading">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5"/><path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
+                    </div>
+                    <div><h2 id="upload-title">Add your dataset</h2><p>Choose a CSV file to get started. Your existing datasets stay available below.</p></div>
+                </div>
+                <form action="/upload/" method="post" enctype="multipart/form-data">
+                    <label class="upload-drop" for="csv-file">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5"/><path d="M5 14v4a2 2 0 0 0 2 2h14"/></svg>
+                        <strong><span>Click to browse</span> or drop your CSV here</strong>
+                        <small>CSV files only</small>
+                        <input class="file-input" id="csv-file" type="file" name="file" accept=".csv,text/csv" required>
+                    </label>
+                    <div class="upload-footer">
+                        <span class="file-caption" id="file-caption">No file selected</span>
+                        <button class="primary-button" type="submit">
+                            Upload CSV
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </form>
+                {% if message %}
+                <div class="message {{ message_type or 'success' }}" role="{{ 'alert' if message_type == 'error' else 'status' }}">
+                    {{ message }}
+                </div>
+                {% endif %}
+                <div class="dataset-bar">
+                    <div class="dataset-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+                        {% if uploaded_files %}{{ uploaded_files|length }} dataset{{ "" if uploaded_files|length == 1 else "s" }} ready to explore{% else %}No datasets uploaded yet{% endif %}
+                    </div>
+                    <span class="dataset-count">CSV format</span>
+                </div>
+            </section>
+
+            <section class="card ask-card" aria-labelledby="ask-title">
+                <div class="card-heading">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg>
+                    </div>
+                    <div><h2 id="ask-title">Ask a question</h2><p>Choose a dataset and explore its columns, rows, values, or trends.</p></div>
+                </div>
+                {% if uploaded_files %}
+                <form class="ask-form" action="/ask/" method="post">
+                    <label class="field-label" for="dataset-select">Dataset</label>
+                    <div class="select-wrap">
+                        <select id="dataset-select" name="file_name" required>
+                            {% for filename in uploaded_files %}
+                            <option value="{{ filename }}" {% if selected_file == filename %}selected{% endif %}>{{ filename }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label class="field-label question-label" for="question">Your question</label>
+                    <textarea id="question" name="question" placeholder="Try: average salary, sort by id desc, or plot sales" required>{{ asked_question or "" }}</textarea>
+                    <div class="suggestions" aria-label="Example questions">
+                        <button class="suggestion" type="button" data-question="columns">List columns</button>
+                        <button class="suggestion" type="button" data-question="rows">Count rows</button>
+                        <button class="suggestion" type="button" data-question="average salary">Average salary</button>
+                        <button class="suggestion" type="button" data-question="sort by id desc">Sort by ID</button>
+                    </div>
+                    <p class="privacy-note" style="margin: 9px 0 0;">Replace example column names with columns from your CSV.</p>
+                    <div class="ask-footer">
+                        <span class="privacy-note">Questions are answered using the selected CSV dataset.</span>
+                        <button class="primary-button" type="submit">
+                            Ask StatBot
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </form>
+                {% else %}
+                <div class="empty-state"><b>Your question box is almost ready</b>Upload a CSV above, then you can choose it here and start asking questions.</div>
+                {% endif %}
+            </section>
+
+            {% if answer %}
+            <section class="card result-card" aria-labelledby="result-title">
+                <div class="result-head">
+                    <div class="result-title" id="result-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+                        Your result
+                    </div>
+                    <span class="result-tag">Analysis complete</span>
+                </div>
+                <div class="result-body">
+                    {% if asked_question %}<p class="field-label">YOUR QUESTION</p><p class="answer-text" style="margin: -3px 0 16px;">{{ asked_question }}</p>{% endif %}
+                    {% if summary %}<p class="answer-text" style="margin-bottom:12px">{{ summary }}</p>{% endif %}
+                    {% if answer is string %}
+                    <p class="answer-text">{{ answer }}</p>
+                    {% elif answer and answer[0] is mapping %}
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr>{% for column in answer[0].keys() %}<th>{{ column }}</th>{% endfor %}</tr></thead>
+                            <tbody>
+                                {% for row in answer %}
+                                <tr>{% for value in row.values() %}<td>{{ value }}</td>{% endfor %}</tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="answer-text">{{ answer }}</p>
+                    {% endif %}
+                    {% if pending_action %}
+                    <div class="message error" role="alert">
+                        <strong>Confirmation required — no changes have been made.</strong>
+                        <p>{{ pending_action.description }}</p>
+                        <form action="/confirm-action/" method="post" style="display:inline-block;margin-right:8px">
+                            <input type="hidden" name="confirmation_token" value="{{ confirmation_token }}">
+                            <input type="hidden" name="confirmed" value="yes">
+                            <input type="hidden" name="view" value="dashboard">
+                            <button class="primary-button" type="submit">Confirm action</button>
+                        </form>
+                        <form action="/confirm-action/" method="post" style="display:inline-block">
+                            <input type="hidden" name="confirmation_token" value="{{ confirmation_token }}">
+                            <input type="hidden" name="confirmed" value="no">
+                            <input type="hidden" name="view" value="dashboard">
+                            <button class="primary-button" type="submit">Cancel</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                    {% if chart_url %}<img class="chart-image" src="{{ chart_url }}" alt="Chart generated from your dataset">{% endif %}
+                    {% if not pending_action %}
+                    <div class="downloads">
+                        <form action="/download/report/" method="post">
+                            <input type="hidden" name="report_payload" value='{{ {"question": asked_question, "summary": summary, "answer": answer}|tojson|forceescape }}'>
+                            <button class="download-link" type="submit">Download report (CSV)</button>
+                        </form>
+                        {% if chart_download_url %}<a class="download-link" href="{{ chart_download_url }}">Download chart (PNG)</a>{% endif %}
+                    </div>
+                    {% endif %}
+                    {% if steps %}
+                    <details>
+                        <summary>How this was analyzed</summary>
+                        <ul class="steps-list">{% for step in steps %}<li>{{ step }}</li>{% endfor %}</ul>
+                    </details>
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
+            <p class="bottom-note">StatBot Pro helps you explore your spreadsheet without writing code.</p>
+        </section>
+    </main>
+</div>
+<script>
+    const fileInput = document.getElementById("csv-file");
+    const fileCaption = document.getElementById("file-caption");
+    const uploadDrop = document.querySelector(".upload-drop");
+    const showSelectedFile = () => {
+        fileCaption.textContent = fileInput.files?.[0]?.name ?? "No file selected";
+    };
+    fileInput?.addEventListener("change", showSelectedFile);
+    uploadDrop?.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        uploadDrop.dataset.dragging = "true";
+    });
+    uploadDrop?.addEventListener("dragleave", () => delete uploadDrop.dataset.dragging);
+    uploadDrop?.addEventListener("drop", (event) => {
+        event.preventDefault();
+        delete uploadDrop.dataset.dragging;
+        if (event.dataTransfer.files.length) {
+            fileInput.files = event.dataTransfer.files;
+            showSelectedFile();
+        }
+    });
+    document.querySelectorAll("[data-question]").forEach((button) => {
+        button.addEventListener("click", () => {
+            const question = document.getElementById("question");
+            question.value = button.dataset.question;
+            question.focus();
+        });
+    });
+</script>
+</body>
+</html>
