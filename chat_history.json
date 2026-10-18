@@ -1,0 +1,1580 @@
+[
+    {
+        "question": "Summarize this CSV",
+        "answer": [
+            {
+                "column": "customer id",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "1001",
+                "average": "1,080",
+                "maximum": "1159"
+            },
+            {
+                "column": "Customer Name",
+                "non_empty": 64,
+                "missing": 95,
+                "unique": 61
+            },
+            {
+                "column": "Product",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 11
+            },
+            {
+                "column": "satate",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 15
+            },
+            {
+                "column": "date",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159
+            },
+            {
+                "column": "January",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2046",
+                "average": "24,454.48",
+                "maximum": "49575"
+            },
+            {
+                "column": "February",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2065",
+                "average": "26,036",
+                "maximum": "49917"
+            },
+            {
+                "column": "March",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2011",
+                "average": "25,178.92",
+                "maximum": "49865"
+            },
+            {
+                "column": "April",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2264",
+                "average": "26,206.52",
+                "maximum": "49953"
+            },
+            {
+                "column": "May",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2032",
+                "average": "23,828.86",
+                "maximum": "49829"
+            },
+            {
+                "column": "June",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2222",
+                "average": "25,290.70",
+                "maximum": "49355"
+            },
+            {
+                "column": "July",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2011",
+                "average": "24,455.43",
+                "maximum": "49867"
+            },
+            {
+                "column": "total salesh",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "86350",
+                "average": "175,450.92",
+                "maximum": "250242"
+            }
+        ],
+        "time": "2026-10-18T11:36:50.563128"
+    },
+    {
+        "question": "What columns are in this file?",
+        "answer": "The CSV contains 13 columns: customer id, Customer Name, Product, satate, date, January, February, March, April, May, June, July, total salesh.",
+        "time": "2026-10-18T11:38:00.004942"
+    },
+    {
+        "question": "How many rows are there?",
+        "answer": "The CSV contains 159 data rows.",
+        "time": "2026-10-18T11:38:26.389994"
+    },
+    {
+        "question": "How many missing values are in each column?",
+        "answer": "The CSV contains 13 columns: customer id, Customer Name, Product, satate, date, January, February, March, April, May, June, July, total salesh.",
+        "time": "2026-10-18T11:38:46.940396"
+    },
+    {
+        "question": "How many missing values are in each column?",
+        "answer": "The CSV contains 13 columns: customer id, Customer Name, Product, satate, date, January, February, March, April, May, June, July, total salesh.",
+        "time": "2026-10-18T11:39:22.439330"
+    },
+    {
+        "question": "What is the total sales?",
+        "answer": "The total sales is 27896696.",
+        "time": "2026-10-18T11:39:47.919839"
+    },
+    {
+        "question": "What is the average sales by state?",
+        "answer": [
+            {
+                "state": "Tamilnadu",
+                "average_sales": 192958.5
+            },
+            {
+                "state": "Kashmire",
+                "average_sales": 187037.72727272726
+            },
+            {
+                "state": "Kerala",
+                "average_sales": 184542.0
+            },
+            {
+                "state": "Pranjab",
+                "average_sales": 182156.6
+            },
+            {
+                "state": "Madhyapradesh",
+                "average_sales": 179836.27272727274
+            },
+            {
+                "state": "Gujrat",
+                "average_sales": 179242.63636363635
+            },
+            {
+                "state": "Jharkahnd",
+                "average_sales": 176796.45454545456
+            },
+            {
+                "state": "Goa",
+                "average_sales": 176379.54545454544
+            },
+            {
+                "state": "Sikkim",
+                "average_sales": 176345.5
+            },
+            {
+                "state": "Himanchal",
+                "average_sales": 176315.9090909091
+            },
+            {
+                "state": "Maharashra",
+                "average_sales": 173395.0
+            },
+            {
+                "state": "Delhi",
+                "average_sales": 173347.3
+            },
+            {
+                "state": "Bihar",
+                "average_sales": 166478.1
+            },
+            {
+                "state": "Uttarparadesh",
+                "average_sales": 153986.27272727274
+            },
+            {
+                "state": "Nainital",
+                "average_sales": 152098.6
+            }
+        ],
+        "time": "2026-10-18T11:40:06.779899"
+    },
+    {
+        "question": "Show the top 5 states by sales",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            }
+        ],
+        "time": "2026-10-18T11:40:30.907260"
+    },
+    {
+        "question": "Which product has the highest sales?",
+        "answer": "Electronics has the highest sales at 2,917,207.",
+        "time": "2026-10-18T11:40:56.118730"
+    },
+    {
+        "question": "How many records are there for each category?",
+        "answer": "The CSV contains 159 data rows.",
+        "time": "2026-10-18T11:41:27.476066"
+    },
+    {
+        "question": "Create a line chart of sales",
+        "answer": "Generated a chart for total salesh. It plots the numeric values from 159 matching rows.",
+        "time": "2026-10-18T11:41:59.889760"
+    },
+    {
+        "question": "Create a bar chart of total sales by state",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            },
+            {
+                "state": "Goa",
+                "total_sales": 1940175
+            },
+            {
+                "state": "Himanchal",
+                "total_sales": 1939475
+            },
+            {
+                "state": "Tamilnadu",
+                "total_sales": 1929585
+            },
+            {
+                "state": "Maharashra",
+                "total_sales": 1907345
+            },
+            {
+                "state": "Pranjab",
+                "total_sales": 1821566
+            },
+            {
+                "state": "Sikkim",
+                "total_sales": 1763455
+            },
+            {
+                "state": "Delhi",
+                "total_sales": 1733473
+            },
+            {
+                "state": "Uttarparadesh",
+                "total_sales": 1693849
+            },
+            {
+                "state": "Bihar",
+                "total_sales": 1664781
+            },
+            {
+                "state": "Nainital",
+                "total_sales": 1520986
+            }
+        ],
+        "time": "2026-10-18T11:42:40.527649"
+    },
+    {
+        "question": "Create a column chart of sales by product",
+        "answer": [
+            {
+                "Product": "Electronics",
+                "total_sales": 2917207
+            },
+            {
+                "Product": "Cosmetics",
+                "total_sales": 2628279
+            },
+            {
+                "Product": "Garment",
+                "total_sales": 2622874
+            },
+            {
+                "Product": "Telicom",
+                "total_sales": 2614841
+            },
+            {
+                "Product": "Food",
+                "total_sales": 2592340
+            },
+            {
+                "Product": "Machines",
+                "total_sales": 2565331
+            },
+            {
+                "Product": "Grosary",
+                "total_sales": 2488865
+            },
+            {
+                "Product": "Buticien",
+                "total_sales": 2487594
+            },
+            {
+                "Product": "It",
+                "total_sales": 2367867
+            },
+            {
+                "Product": "Television",
+                "total_sales": 2317111
+            },
+            {
+                "Product": "Healthcare",
+                "total_sales": 2294387
+            }
+        ],
+        "time": "2026-10-18T11:43:07.759885"
+    },
+    {
+        "question": "Create a column chart of sales by product",
+        "answer": [
+            {
+                "Product": "Electronics",
+                "total_sales": 2917207
+            },
+            {
+                "Product": "Cosmetics",
+                "total_sales": 2628279
+            },
+            {
+                "Product": "Garment",
+                "total_sales": 2622874
+            },
+            {
+                "Product": "Telicom",
+                "total_sales": 2614841
+            },
+            {
+                "Product": "Food",
+                "total_sales": 2592340
+            },
+            {
+                "Product": "Machines",
+                "total_sales": 2565331
+            },
+            {
+                "Product": "Grosary",
+                "total_sales": 2488865
+            },
+            {
+                "Product": "Buticien",
+                "total_sales": 2487594
+            },
+            {
+                "Product": "It",
+                "total_sales": 2367867
+            },
+            {
+                "Product": "Television",
+                "total_sales": 2317111
+            },
+            {
+                "Product": "Healthcare",
+                "total_sales": 2294387
+            }
+        ],
+        "time": "2026-10-18T11:43:37.997556"
+    },
+    {
+        "question": "Create a line chart of total sales by month",
+        "answer": [
+            {
+                "month": "April",
+                "total_sales": 4166837
+            },
+            {
+                "month": "February",
+                "total_sales": 4139724
+            },
+            {
+                "month": "June",
+                "total_sales": 4021221
+            },
+            {
+                "month": "March",
+                "total_sales": 4003449
+            },
+            {
+                "month": "July",
+                "total_sales": 3888413
+            },
+            {
+                "month": "January",
+                "total_sales": 3888263
+            },
+            {
+                "month": "May",
+                "total_sales": 3788789
+            }
+        ],
+        "time": "2026-10-18T11:44:06.258638"
+    },
+    {
+        "question": "Create a pie chart of sales by state",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            },
+            {
+                "state": "Goa",
+                "total_sales": 1940175
+            },
+            {
+                "state": "Himanchal",
+                "total_sales": 1939475
+            },
+            {
+                "state": "Tamilnadu",
+                "total_sales": 1929585
+            },
+            {
+                "state": "Maharashra",
+                "total_sales": 1907345
+            },
+            {
+                "state": "Pranjab",
+                "total_sales": 1821566
+            },
+            {
+                "state": "Sikkim",
+                "total_sales": 1763455
+            },
+            {
+                "state": "Delhi",
+                "total_sales": 1733473
+            },
+            {
+                "state": "Uttarparadesh",
+                "total_sales": 1693849
+            },
+            {
+                "state": "Bihar",
+                "total_sales": 1664781
+            },
+            {
+                "state": "Nainital",
+                "total_sales": 1520986
+            }
+        ],
+        "time": "2026-10-18T11:44:30.600101"
+    },
+    {
+        "question": "Create a line chart of total sales by month",
+        "answer": [
+            {
+                "month": "April",
+                "total_sales": 4166837
+            },
+            {
+                "month": "February",
+                "total_sales": 4139724
+            },
+            {
+                "month": "June",
+                "total_sales": 4021221
+            },
+            {
+                "month": "March",
+                "total_sales": 4003449
+            },
+            {
+                "month": "July",
+                "total_sales": 3888413
+            },
+            {
+                "month": "January",
+                "total_sales": 3888263
+            },
+            {
+                "month": "May",
+                "total_sales": 3788789
+            }
+        ],
+        "time": "2026-10-18T11:44:57.250197"
+    },
+    {
+        "question": "Show rows where sales are over 200000",
+        "answer": [
+            {
+                "customer id": "1008",
+                "Customer Name": "Mohini ",
+                "Product": "Food",
+                "satate": "Madhyapradesh",
+                "date": "10/5/2026",
+                "January": "38536",
+                "February": "13601",
+                "March": "35522",
+                "April": "21171",
+                "May": "28246",
+                "June": "33468",
+                "July": "29754",
+                "total salesh": "200298"
+            },
+            {
+                "customer id": "1021",
+                "Customer Name": "Madan",
+                "Product": "Television",
+                "satate": "Himanchal",
+                "date": "14/7/2029",
+                "January": "39138",
+                "February": "48171",
+                "March": "31226",
+                "April": "12751",
+                "May": "23347",
+                "June": "22699",
+                "July": "26743",
+                "total salesh": "204075"
+            },
+            {
+                "customer id": "1023",
+                "Customer Name": "Kavita",
+                "Product": "Garment",
+                "satate": "Madhyapradesh",
+                "date": "6/4/2038",
+                "January": "36543",
+                "February": "14642",
+                "March": "28370",
+                "April": "36631",
+                "May": "25374",
+                "June": "48848",
+                "July": "28372",
+                "total salesh": "218780"
+            },
+            {
+                "customer id": "1025",
+                "Customer Name": "Rupendra",
+                "Product": "Electronics ",
+                "satate": "Bihar",
+                "date": "8/4/2039",
+                "January": "48168",
+                "February": "43713",
+                "March": "32171",
+                "April": "25246",
+                "May": "17895",
+                "June": "4530",
+                "July": "43467",
+                "total salesh": "215190"
+            },
+            {
+                "customer id": "1033",
+                "Customer Name": "Arvind ",
+                "Product": "Telicom",
+                "satate": "Kerala",
+                "date": "14/7/2033",
+                "January": "47707",
+                "February": "6728",
+                "March": "27440",
+                "April": "15887",
+                "May": "8010",
+                "June": "46238",
+                "July": "49466",
+                "total salesh": "201476"
+            },
+            {
+                "customer id": "1034",
+                "Customer Name": "Ashtosh",
+                "Product": "Garment",
+                "satate": "Gujrat ",
+                "date": "8/3/2046",
+                "January": "44374",
+                "February": "49917",
+                "March": "17078",
+                "April": "10071",
+                "May": "33018",
+                "June": "31994",
+                "July": "36293",
+                "total salesh": "222745"
+            },
+            {
+                "customer id": "1036",
+                "Customer Name": "Ramjanam",
+                "Product": "Electronics ",
+                "satate": "Himanchal",
+                "date": "14/7/2034",
+                "January": "26626",
+                "February": "26140",
+                "March": "35444",
+                "April": "36829",
+                "May": "29282",
+                "June": "28635",
+                "July": "21866",
+                "total salesh": "204822"
+            },
+            {
+                "customer id": "1045",
+                "Customer Name": "Ikbal",
+                "Product": "Garment",
+                "satate": "Tamilnadu",
+                "date": "14/7/2037",
+                "January": "42075",
+                "February": "46873",
+                "March": "21699",
+                "April": "28728",
+                "May": "23722",
+                "June": "30430",
+                "July": "19947",
+                "total salesh": "213474"
+            },
+            {
+                "customer id": "1047",
+                "Customer Name": "Sudhanshu",
+                "Product": "Electronics ",
+                "satate": "Kashmire",
+                "date": "1/31/2057",
+                "January": "31771",
+                "February": "37482",
+                "March": "15874",
+                "April": "30698",
+                "May": "39048",
+                "June": "7228",
+                "July": "48054",
+                "total salesh": "210155"
+            },
+            {
+                "customer id": "1048",
+                "Customer Name": "Hitesh",
+                "Product": "Machines",
+                "satate": "Kerala",
+                "date": "14/7/2038",
+                "January": "46391",
+                "February": "38329",
+                "March": "34008",
+                "April": "25566",
+                "May": "45565",
+                "June": "8216",
+                "July": "38815",
+                "total salesh": "236890"
+            },
+            {
+                "customer id": "1051",
+                "Customer Name": "Dhanush",
+                "Product": "Buticien ",
+                "satate": "Himanchal",
+                "date": "14/7/2039",
+                "January": "38381",
+                "February": "24223",
+                "March": "6615",
+                "April": "48646",
+                "May": "49829",
+                "June": "35433",
+                "July": "36413",
+                "total salesh": "239540"
+            },
+            {
+                "customer id": "1057",
+                "Customer Name": "Rakesh ",
+                "Product": "Cosmetics ",
+                "satate": "Pranjab",
+                "date": "14/7/2041",
+                "January": "28333",
+                "February": "15487",
+                "March": "32958",
+                "April": "39977",
+                "May": "44007",
+                "June": "13352",
+                "July": "26966",
+                "total salesh": "201080"
+            },
+            {
+                "customer id": "1060",
+                "Customer Name": "Surenda",
+                "Product": "Grosary",
+                "satate": "Tamilnadu",
+                "date": "14/7/2042",
+                "January": "42942",
+                "February": "10584",
+                "March": "44892",
+                "April": "33831",
+                "May": "38945",
+                "June": "34986",
+                "July": "3526",
+                "total salesh": "209706"
+            },
+            {
+                "customer id": "1062",
+                "Customer Name": "Durga",
+                "Product": "Buticien ",
+                "satate": "Kashmire",
+                "date": "9/30/2068",
+                "January": "45959",
+                "February": "43487",
+                "March": "19749",
+                "April": "44665",
+                "May": "16077",
+                "June": "33962",
+                "July": "17904",
+                "total salesh": "221803"
+            },
+            {
+                "customer id": "1063",
+                "Customer Name": "Kalpendra",
+                "Product": "Food",
+                "satate": "Kerala",
+                "date": "14/7/2043",
+                "January": "26129",
+                "February": "37476",
+                "March": "24595",
+                "April": "11999",
+                "May": "31211",
+                "June": "30746",
+                "July": "41132",
+                "total salesh": "203288"
+            },
+            {
+                "customer id": "1066",
+                "Customer Name": "",
+                "Product": "Telicom",
+                "satate": "Himanchal",
+                "date": "14/7/2044",
+                "January": "32249",
+                "February": "25792",
+                "March": "44388",
+                "April": "35132",
+                "May": "31040",
+                "June": "12132",
+                "July": "23779",
+                "total salesh": "204512"
+            },
+            {
+                "customer id": "1068",
+                "Customer Name": "",
+                "Product": "Cosmetics ",
+                "satate": "Madhyapradesh",
+                "date": "5/31/2073",
+                "January": "18603",
+                "February": "9224",
+                "March": "32596",
+                "April": "49180",
+                "May": "39107",
+                "June": "46580",
+                "July": "28815",
+                "total salesh": "224105"
+            },
+            {
+                "customer id": "1074",
+                "Customer Name": "",
+                "Product": "Food",
+                "satate": "Delhi",
+                "date": "1/29/2078",
+                "January": "26925",
+                "February": "19645",
+                "March": "46748",
+                "April": "46161",
+                "May": "10741",
+                "June": "26759",
+                "July": "39096",
+                "total salesh": "216075"
+            },
+            {
+                "customer id": "1080",
+                "Customer Name": "",
+                "Product": "Electronics ",
+                "satate": "Maharashra",
+                "date": "9/29/2082",
+                "January": "30613",
+                "February": "21059",
+                "March": "37402",
+                "April": "49953",
+                "May": "7111",
+                "June": "48496",
+                "July": "42879",
+                "total salesh": "237513"
+            },
+            {
+                "customer id": "1087",
+                "Customer Name": "",
+                "Product": "Television",
+                "satate": "Pranjab",
+                "date": "14/7/2051",
+                "January": "33038",
+                "February": "45984",
+                "March": "10172",
+                "April": "38063",
+                "May": "37673",
+                "June": "27859",
+                "July": "22060",
+                "total salesh": "214849"
+            },
+            {
+                "customer id": "1092",
+                "Customer Name": "",
+                "Product": "Machines",
+                "satate": "Kashmire",
+                "date": "1/28/2092",
+                "January": "49225",
+                "February": "44552",
+                "March": "31404",
+                "April": "26900",
+                "May": "39585",
+                "June": "47018",
+                "July": "11141",
+                "total salesh": "249825"
+            },
+            {
+                "customer id": "1093",
+                "Customer Name": "",
+                "Product": "Grosary",
+                "satate": "Kerala",
+                "date": "14/7/2053",
+                "January": "32686",
+                "February": "34105",
+                "March": "40866",
+                "April": "30974",
+                "May": "14444",
+                "June": "36826",
+                "July": "47080",
+                "total salesh": "236981"
+            },
+            {
+                "customer id": "1094",
+                "Customer Name": "",
+                "Product": "Healthcare",
+                "satate": "Gujrat ",
+                "date": "3/29/2093",
+                "January": "47219",
+                "February": "23609",
+                "March": "42887",
+                "April": "21497",
+                "May": "43089",
+                "June": "41853",
+                "July": "30088",
+                "total salesh": "250242"
+            },
+            {
+                "customer id": "1105",
+                "Customer Name": "",
+                "Product": "Healthcare",
+                "satate": "Tamilnadu",
+                "date": "14/7/2057",
+                "January": "38746",
+                "February": "31337",
+                "March": "37855",
+                "April": "48393",
+                "May": "14453",
+                "June": "36284",
+                "July": "22980",
+                "total salesh": "230048"
+            },
+            {
+                "customer id": "1110",
+                "Customer Name": "",
+                "Product": "Telicom",
+                "satate": "Maharashra",
+                "date": "1/27/2106",
+                "January": "43404",
+                "February": "10082",
+                "March": "29316",
+                "April": "21921",
+                "May": "8169",
+                "June": "48486",
+                "July": "43915",
+                "total salesh": "205293"
+            },
+            {
+                "customer id": "1116",
+                "Customer Name": "",
+                "Product": "Healthcare",
+                "satate": "Sikkim",
+                "date": "9/27/2110",
+                "January": "13896",
+                "February": "48945",
+                "March": "36585",
+                "April": "42267",
+                "May": "44716",
+                "June": "40477",
+                "July": "14529",
+                "total salesh": "241415"
+            },
+            {
+                "customer id": "1123",
+                "Customer Name": "",
+                "Product": "Cosmetics ",
+                "satate": "Kerala",
+                "date": "14/7/2063",
+                "January": "25516",
+                "February": "45732",
+                "March": "42564",
+                "April": "42758",
+                "May": "20490",
+                "June": "12340",
+                "July": "47145",
+                "total salesh": "236545"
+            },
+            {
+                "customer id": "1126",
+                "Customer Name": "",
+                "Product": "Grosary",
+                "satate": "Himanchal",
+                "date": "14/7/2064",
+                "January": "25440",
+                "February": "11927",
+                "March": "48847",
+                "April": "26402",
+                "May": "32679",
+                "June": "39697",
+                "July": "43331",
+                "total salesh": "228323"
+            },
+            {
+                "customer id": "1131",
+                "Customer Name": "",
+                "Product": "Television",
+                "satate": "Sikkim",
+                "date": "5/27/2122",
+                "January": "7942",
+                "February": "29594",
+                "March": "28694",
+                "April": "32688",
+                "May": "46006",
+                "June": "19063",
+                "July": "45251",
+                "total salesh": "209238"
+            },
+            {
+                "customer id": "1132",
+                "Customer Name": "",
+                "Product": "Telicom",
+                "satate": "Pranjab",
+                "date": "14/7/2066",
+                "January": "16452",
+                "February": "47655",
+                "March": "43014",
+                "April": "45203",
+                "May": "28436",
+                "June": "45152",
+                "July": "19641",
+                "total salesh": "245553"
+            },
+            {
+                "customer id": "1134",
+                "Customer Name": "",
+                "Product": "Cosmetics ",
+                "satate": "Delhi",
+                "date": "9/25/2124",
+                "January": "19036",
+                "February": "40784",
+                "March": "11202",
+                "April": "44808",
+                "May": "23677",
+                "June": "46832",
+                "July": "21798",
+                "total salesh": "208137"
+            },
+            {
+                "customer id": "1137",
+                "Customer Name": "",
+                "Product": "Grosary",
+                "satate": "Kashmire",
+                "date": "1/25/2127",
+                "January": "46174",
+                "February": "39922",
+                "March": "6207",
+                "April": "26041",
+                "May": "7308",
+                "June": "28740",
+                "July": "47031",
+                "total salesh": "201423"
+            },
+            {
+                "customer id": "1143",
+                "Customer Name": "",
+                "Product": "Telicom",
+                "satate": "Madhyapradesh",
+                "date": "9/25/2131",
+                "January": "29265",
+                "February": "5181",
+                "March": "21836",
+                "April": "41787",
+                "May": "17091",
+                "June": "48771",
+                "July": "40754",
+                "total salesh": "204685"
+            },
+            {
+                "customer id": "1144",
+                "Customer Name": "",
+                "Product": "Garment",
+                "satate": "Jharkahnd",
+                "date": "14/7/2070",
+                "January": "36028",
+                "February": "12504",
+                "March": "28925",
+                "April": "40832",
+                "May": "46711",
+                "June": "31384",
+                "July": "40013",
+                "total salesh": "236397"
+            },
+            {
+                "customer id": "1146",
+                "Customer Name": "",
+                "Product": "Electronics ",
+                "satate": "Sikkim",
+                "date": "1/24/2134",
+                "January": "21828",
+                "February": "46012",
+                "March": "41559",
+                "April": "23443",
+                "May": "34524",
+                "June": "32467",
+                "July": "38141",
+                "total salesh": "237974"
+            },
+            {
+                "customer id": "1147",
+                "Customer Name": "",
+                "Product": "Machines",
+                "satate": "Pranjab",
+                "date": "14/7/2071",
+                "January": "48343",
+                "February": "13525",
+                "March": "37523",
+                "April": "32583",
+                "May": "18576",
+                "June": "17136",
+                "July": "42414",
+                "total salesh": "210100"
+            }
+        ],
+        "time": "2026-10-18T11:45:17.321781"
+    },
+    {
+        "question": "Show rows where state is Kerala",
+        "answer": "The CSV contains 159 data rows.",
+        "time": "2026-10-18T11:45:54.430925"
+    },
+    {
+        "question": "Show duplicate rows",
+        "answer": [],
+        "time": "2026-10-18T11:46:15.196123"
+    },
+    {
+        "question": "Create a chart of total sales by state",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            },
+            {
+                "state": "Goa",
+                "total_sales": 1940175
+            },
+            {
+                "state": "Himanchal",
+                "total_sales": 1939475
+            },
+            {
+                "state": "Tamilnadu",
+                "total_sales": 1929585
+            },
+            {
+                "state": "Maharashra",
+                "total_sales": 1907345
+            },
+            {
+                "state": "Pranjab",
+                "total_sales": 1821566
+            },
+            {
+                "state": "Sikkim",
+                "total_sales": 1763455
+            },
+            {
+                "state": "Delhi",
+                "total_sales": 1733473
+            },
+            {
+                "state": "Uttarparadesh",
+                "total_sales": 1693849
+            },
+            {
+                "state": "Bihar",
+                "total_sales": 1664781
+            },
+            {
+                "state": "Nainital",
+                "total_sales": 1520986
+            }
+        ],
+        "time": "2026-10-18T12:26:04.580379+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/summary_1db0983ffa204040ac884f8a1caacf96.png"
+    },
+    {
+        "question": "Create a line chart of sales",
+        "answer": "Generated a chart for total salesh. It plots the numeric values from 159 matching rows.",
+        "time": "2026-10-18T12:30:42.248424+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/total_salesh_b4c7185829cf4bdd86ed4b9e1f148449.png"
+    },
+    {
+        "question": "Create a pie chart of sales by state",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            },
+            {
+                "state": "Goa",
+                "total_sales": 1940175
+            },
+            {
+                "state": "Himanchal",
+                "total_sales": 1939475
+            },
+            {
+                "state": "Tamilnadu",
+                "total_sales": 1929585
+            },
+            {
+                "state": "Maharashra",
+                "total_sales": 1907345
+            },
+            {
+                "state": "Pranjab",
+                "total_sales": 1821566
+            },
+            {
+                "state": "Sikkim",
+                "total_sales": 1763455
+            },
+            {
+                "state": "Delhi",
+                "total_sales": 1733473
+            },
+            {
+                "state": "Uttarparadesh",
+                "total_sales": 1693849
+            },
+            {
+                "state": "Bihar",
+                "total_sales": 1664781
+            },
+            {
+                "state": "Nainital",
+                "total_sales": 1520986
+            }
+        ],
+        "time": "2026-10-18T12:31:27.026745+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/summary_ab602fad51494ad993ffc4e4a94f7b60.png"
+    },
+    {
+        "question": "Create a bar chart of total sales by state",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            },
+            {
+                "state": "Goa",
+                "total_sales": 1940175
+            },
+            {
+                "state": "Himanchal",
+                "total_sales": 1939475
+            },
+            {
+                "state": "Tamilnadu",
+                "total_sales": 1929585
+            },
+            {
+                "state": "Maharashra",
+                "total_sales": 1907345
+            },
+            {
+                "state": "Pranjab",
+                "total_sales": 1821566
+            },
+            {
+                "state": "Sikkim",
+                "total_sales": 1763455
+            },
+            {
+                "state": "Delhi",
+                "total_sales": 1733473
+            },
+            {
+                "state": "Uttarparadesh",
+                "total_sales": 1693849
+            },
+            {
+                "state": "Bihar",
+                "total_sales": 1664781
+            },
+            {
+                "state": "Nainital",
+                "total_sales": 1520986
+            }
+        ],
+        "time": "2026-10-18T12:32:04.706077+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/summary_0a1c70441f8a41f797129ec1082aa1bf.png"
+    },
+    {
+        "question": "Create a column chart of sales by product",
+        "answer": [
+            {
+                "Product": "Electronics",
+                "total_sales": 2917207
+            },
+            {
+                "Product": "Cosmetics",
+                "total_sales": 2628279
+            },
+            {
+                "Product": "Garment",
+                "total_sales": 2622874
+            },
+            {
+                "Product": "Telicom",
+                "total_sales": 2614841
+            },
+            {
+                "Product": "Food",
+                "total_sales": 2592340
+            },
+            {
+                "Product": "Machines",
+                "total_sales": 2565331
+            },
+            {
+                "Product": "Grosary",
+                "total_sales": 2488865
+            },
+            {
+                "Product": "Buticien",
+                "total_sales": 2487594
+            },
+            {
+                "Product": "It",
+                "total_sales": 2367867
+            },
+            {
+                "Product": "Television",
+                "total_sales": 2317111
+            },
+            {
+                "Product": "Healthcare",
+                "total_sales": 2294387
+            }
+        ],
+        "time": "2026-10-18T12:32:31.760207+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/summary_27ea69250c5d4b9396f914e534e73f35.png"
+    },
+    {
+        "question": "Create a pie chart of sales by state",
+        "answer": [
+            {
+                "state": "Kashmire",
+                "total_sales": 2057415
+            },
+            {
+                "state": "Kerala",
+                "total_sales": 2029962
+            },
+            {
+                "state": "Madhyapradesh",
+                "total_sales": 1978199
+            },
+            {
+                "state": "Gujrat",
+                "total_sales": 1971669
+            },
+            {
+                "state": "Jharkahnd",
+                "total_sales": 1944761
+            },
+            {
+                "state": "Goa",
+                "total_sales": 1940175
+            },
+            {
+                "state": "Himanchal",
+                "total_sales": 1939475
+            },
+            {
+                "state": "Tamilnadu",
+                "total_sales": 1929585
+            },
+            {
+                "state": "Maharashra",
+                "total_sales": 1907345
+            },
+            {
+                "state": "Pranjab",
+                "total_sales": 1821566
+            },
+            {
+                "state": "Sikkim",
+                "total_sales": 1763455
+            },
+            {
+                "state": "Delhi",
+                "total_sales": 1733473
+            },
+            {
+                "state": "Uttarparadesh",
+                "total_sales": 1693849
+            },
+            {
+                "state": "Bihar",
+                "total_sales": 1664781
+            },
+            {
+                "state": "Nainital",
+                "total_sales": 1520986
+            }
+        ],
+        "time": "2026-10-18T12:32:58.998789+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/summary_25bca02fd05f4798b0ae5fba0bf03a0b.png"
+    },
+    {
+        "question": "Create a line chart of total sales by month",
+        "answer": [
+            {
+                "month": "April",
+                "total_sales": 4166837
+            },
+            {
+                "month": "February",
+                "total_sales": 4139724
+            },
+            {
+                "month": "June",
+                "total_sales": 4021221
+            },
+            {
+                "month": "March",
+                "total_sales": 4003449
+            },
+            {
+                "month": "July",
+                "total_sales": 3888413
+            },
+            {
+                "month": "January",
+                "total_sales": 3888263
+            },
+            {
+                "month": "May",
+                "total_sales": 3788789
+            }
+        ],
+        "time": "2026-10-18T12:33:29.275036+05:30",
+        "file_name": "statebot.csv",
+        "chart_url": "/charts/summary_1fb59c9e63d94d6e9dc86b6ef10d6b82.png"
+    },
+    {
+        "question": "Summarize this CSV",
+        "answer": [
+            {
+                "column": "customer id",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "1001",
+                "average": "1,080",
+                "maximum": "1159"
+            },
+            {
+                "column": "Customer Name",
+                "non_empty": 64,
+                "missing": 95,
+                "unique": 61
+            },
+            {
+                "column": "Product",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 11
+            },
+            {
+                "column": "satate",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 15
+            },
+            {
+                "column": "date",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159
+            },
+            {
+                "column": "January",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2046",
+                "average": "24,454.48",
+                "maximum": "49575"
+            },
+            {
+                "column": "February",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2065",
+                "average": "26,036",
+                "maximum": "49917"
+            },
+            {
+                "column": "March",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2011",
+                "average": "25,178.92",
+                "maximum": "49865"
+            },
+            {
+                "column": "April",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2264",
+                "average": "26,206.52",
+                "maximum": "49953"
+            },
+            {
+                "column": "May",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2032",
+                "average": "23,828.86",
+                "maximum": "49829"
+            },
+            {
+                "column": "June",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2222",
+                "average": "25,290.70",
+                "maximum": "49355"
+            },
+            {
+                "column": "July",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "2011",
+                "average": "24,455.43",
+                "maximum": "49867"
+            },
+            {
+                "column": "total salesh",
+                "non_empty": 159,
+                "missing": 0,
+                "unique": 159,
+                "minimum": "86350",
+                "average": "175,450.92",
+                "maximum": "250242"
+            }
+        ],
+        "time": "2026-10-18T12:34:02.130773+05:30",
+        "file_name": "statebot.csv"
+    }
+]
