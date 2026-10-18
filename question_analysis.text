@@ -1,0 +1,29 @@
+Try these questions in the chat after uploading a CSV. Replace the example column names with ones in your file.
+
+**Explore the data**
+- `Summarize this CSV`
+- `What columns are in this file?`
+- `How many rows are there?`
+- `How many missing values are in each column?`
+
+**Analyze values**
+- `What is the total sales?`
+- `What is the average sales by state?`
+- `Show the top 5 states by sales`
+- `Which product has the highest sales?`
+- `How many records are there for each category?`
+
+**Test charts**
+- `Create a line chart of sales`
+- `Create a bar chart of total sales by state`
+- `Create a column chart of sales by product`
+- `Create a pie chart of sales by state`
+- `Create a line chart of total sales by month`
+
+**Test filters and data handling**
+- `Show rows where sales are over 200000`
+- `Show rows where state is Kerala`
+- `Show duplicate rows`
+- `Remove duplicate rows`
+
+The last prompt should ask you to confirm before applying the cleanup.
